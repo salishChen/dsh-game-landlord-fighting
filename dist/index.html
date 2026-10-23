@@ -1,0 +1,12 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>斗地主</title><link rel="stylesheet" href="style.css"></head>
+<body><div class="table"><header><div><span class="eyebrow">三人对局 · 明牌信息隔离</span><h1>斗地主</h1></div><div class="top-actions"><button id="new">重新发牌</button><button id="pause">暂停</button></div></header>
+<div class="info-line"><span id="phase" role="status">连接牌桌中…</span><span id="privacy">AI 只接收自己的手牌、明示底牌和公开记录</span></div>
+<details id="settings"><summary>游戏设置</summary><label class="setting-option"><input id="show-remaining" type="checkbox"> 显示剩余牌数量</label><p>按点数统计其他玩家尚未打出的牌：整副牌减去你的手牌和所有公开出牌；叫地主时包含未分配底牌。不读取对手手牌，不改变 AI 可见信息。</p><p>AI 提示词要求收到消息后 5 秒内选牌；实际响应时间取决于模型与网络。</p></details>
+<section id="remaining-panel" class="remaining-panel" aria-label="剩余牌计数" hidden><span class="caption">其他玩家未出牌 · 同点数合计</span><div id="remaining-cards" class="remaining-cards"></div></section>
+<section class="opponents"><div id="seat1" class="seat"></div><div class="bottom-area"><span class="caption">地主底牌</span><div id="bottom" class="cards"></div></div><div id="seat2" class="seat"></div></section>
+<section class="arena"><div id="last-play" class="last-play"></div><div id="decision" class="decision" role="status"></div><div id="result" class="result"></div></section>
+<section class="player"><div class="player-line"><strong id="you">你</strong><span id="hand-count"></span><span id="selected-count"></span></div><div id="hand" class="hand" aria-label="你的手牌"></div><div id="actions" class="actions"></div></section>
+<button id="review" class="review-button" hidden>查看本局 AI 对话与 Token</button>
+<section id="review-panel" class="review-panel" hidden><div class="player-line"><h2>赛后 AI 调用记录</h2><button id="close-review">收起</button></div><p>仅展示实际发送的消息和最终回复，不包含模型内部推理文本。</p><div id="review-content"></div></section>
+<details><summary>公开出牌记录与规则</summary><p>叫分 0–3 分，最高分成为地主；3 分直接确定，全不叫则重发。支持单张、对子、三张及带牌、顺子、连对、飞机及带翅膀、四带二、炸弹、王炸。顺子不含 2 和王；飞机翅膀不得重复主体点数或同时带双王。农民共同获胜。本局不存档。</p><ol id="history"></ol></details>
+<div id="error" class="error" role="alert"></div><div id="paused" class="paused" hidden><div><h2>对局已暂停</h2><p>切回游戏中心可继续原对局</p><button id="resume">继续对局</button></div></div></div><script src="insights.js"></script><script src="game.js"></script></body></html>

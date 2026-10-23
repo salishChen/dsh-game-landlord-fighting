@@ -1,0 +1,10 @@
+{
+  "schemaVersion":1,"id":"example.landlord","name":"斗地主","version":"0.2.0","sdk":"^1.0.0",
+  "runtime":{"kind":"web","entry":"dist/index.html"},
+  "categories":["棋牌","策略"],
+  "permissions":{"storage":"game-scoped","directNetwork":false},
+  "ai":{"slots":{
+    "landlordSeat1":{"required":false,"operation":"chat.generate","requires":{"input":["text"],"output":["text"]},"fallback":"bundled-assets"},
+    "landlordSeat2":{"required":false,"operation":"chat.generate","requires":{"input":["text"],"output":["text"]},"fallback":"bundled-assets"}
+  }}
+}
